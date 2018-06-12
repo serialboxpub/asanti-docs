@@ -235,6 +235,12 @@
             <a href="#Backend-API-secured" class="toc-h1 toc-link" data-title="secured">secured</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#getserials" class="toc-h2 toc-link" data-title="getserials">getSerials</a>
+                  </li>
+                  <li>
+                    <a href="#getserialbyid" class="toc-h2 toc-link" data-title="getserialbyid">getSerialById</a>
+                  </li>
+                  <li>
                     <a href="#getepisodes" class="toc-h2 toc-link" data-title="getepisodes">getEpisodes</a>
                   </li>
                   <li>
@@ -263,6 +269,9 @@
           <li>
             <a href="#schemas" class="toc-h1 toc-link" data-title="schemas">Schemas</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tocSserial" class="toc-h2 toc-link" data-title="serial">Serial</a>
+                  </li>
                   <li>
                     <a href="#tocSseason" class="toc-h2 toc-link" data-title="season">Season</a>
                   </li>
@@ -315,6 +324,801 @@ License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a
 <h1 id="Backend-API-secured">secured</h1>
 
 <p>Secured calls for clients with keys</p>
+<h2 id='getserials'>getSerials</h2>
+<p><a id="opIdgetSerials"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'X-Api-Key: API_KEY'</span>
+
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+
+Accept: application/json
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
+
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'API_KEY'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">'API_KEY'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight go tab-go"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+       </span><span class="s">"bytes"</span><span class="x">
+       </span><span class="s">"net/http"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+
+    </span><span class="n">headers</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span><span class="x">
+        </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"X-Api-Key"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"API_KEY"</span><span class="p">},</span><span class="x">
+
+    </span><span class="p">}</span><span class="x">
+
+    </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
+
+    </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
+    </span><span class="n">resp</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
+    </span><span class="c">// ...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre>
+<p><code>GET /serials</code></p>
+
+<p><em>displays a list of serials</em></p>
+
+<p>sorts available: created_at, release_date, title
+filters: published</p>
+
+<h3 id="getserials-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>page number</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>how many items to show per page</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>sort string, a comma separated list of fields and asc/desc</td>
+</tr>
+<tr>
+<td>published</td>
+<td>query</td>
+<td>boolean</td>
+<td>false</td>
+<td>whether the serial is published</td>
+</tr>
+</tbody></table>
+<h4 id='detailed-descriptions'>Detailed descriptions</h4>
+<p><strong>sort</strong>: sort string, a comma separated list of fields and asc/desc
+example &quot;created_at asc&quot; or &quot;created_at asc, title desc&quot;</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"short_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"long_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"default_subscriber_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"default_episode_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"custom_badge_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"drm_restricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"new_episodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mailing_list_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cover_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cover_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"thumb_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"thumb_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="getserials-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>serials sent</td>
+<td>Inline</td>
+</tr>
+</tbody></table>
+
+<h3 id="getserials-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» data</td>
+<td>[<a href="#schemaserial">Serial</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» published</td>
+<td>boolean</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» title</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» short_title</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» release_date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» end_date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» slug</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» tagline</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» short_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» long_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» default_subscriber_price</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» default_episode_price</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» custom_badge_text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» drm_restricted</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» new_episodes</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» mailing_list_id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» cover_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» cover_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» thumb_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» thumb_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» updated_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» created_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='getserialbyid'>getSerialById</h2>
+<p><a id="opIdgetSerialById"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/<span class="o">{</span>serialId<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'X-Api-Key: API_KEY'</span>
+
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+
+Accept: application/json
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
+
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'API_KEY'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">'API_KEY'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight go tab-go"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+       </span><span class="s">"bytes"</span><span class="x">
+       </span><span class="s">"net/http"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+
+    </span><span class="n">headers</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span><span class="x">
+        </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"X-Api-Key"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"API_KEY"</span><span class="p">},</span><span class="x">
+
+    </span><span class="p">}</span><span class="x">
+
+    </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
+
+    </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
+    </span><span class="n">resp</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
+    </span><span class="c">// ...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre>
+<p><code>GET /serials/{serialId}</code></p>
+
+<p><em>retrieves info about a serial</em></p>
+
+<p>get info about one serial</p>
+
+<h3 id="getserialbyid-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serialId</td>
+<td>path</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>Serial id to show</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"short_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"long_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default_subscriber_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default_episode_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"custom_badge_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"drm_restricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"new_episodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mailing_list_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cover_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thumb_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thumb_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="getserialbyid-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>success; serial returned</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>serial not found</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="getserialbyid-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» data</td>
+<td><a href="#schemaserial">Serial</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» published</td>
+<td>boolean</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» title</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» short_title</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» release_date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» end_date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» slug</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» tagline</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» short_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» long_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» default_subscriber_price</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» default_episode_price</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» custom_badge_text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» drm_restricted</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» new_episodes</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» mailing_list_id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» cover_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» cover_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» thumb_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» thumb_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» updated_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» created_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
 <h2 id='getepisodes'>getEpisodes</h2>
 <p><a id="opIdgetEpisodes"></a></p>
 
@@ -436,7 +1240,8 @@ Accept: application/json
 
 <p><em>displays a list of episodes</em></p>
 
-<p>displays a list of episodes</p>
+<p>sorts available: episode_number, created_at, release_date
+title</p>
 
 <h3 id="getepisodes-parameters">Parameters</h3>
 
@@ -461,7 +1266,7 @@ Accept: application/json
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>number of items to show per page</td>
+<td>how many items to show per page</td>
 </tr>
 <tr>
 <td>sort</td>
@@ -503,7 +1308,7 @@ Accept: application/json
 <td>query</td>
 <td>string(date-time)</td>
 <td>false</td>
-<td>exact match on release date</td>
+<td>exact match on release date of serial</td>
 </tr>
 <tr>
 <td>release_date_until</td>
@@ -520,7 +1325,7 @@ Accept: application/json
 <td>match &gt; release date</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
 <p><strong>sort</strong>: sort string, a comma separated list of fields and asc/desc
 example &quot;created_at asc&quot; or &quot;created_at asc, title desc&quot;</p>
 
@@ -557,8 +1362,8 @@ example &quot;created_at asc&quot; or &quot;created_at asc, title desc&quot;</p>
       </span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"divider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -971,8 +1776,8 @@ Accept: application/json
     </span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"divider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1260,10 +2065,10 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T14:35:45Z",
+    "last_activity": "2018-06-12T19:14:54Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1372,10 +2177,10 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     </span><span class="s2">"privileges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"preferred_payment_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1491,10 +2296,10 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     </span><span class="s2">"privileges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"preferred_payment_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1782,10 +2587,10 @@ Accept: application/json
     </span><span class="s2">"privileges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"preferred_payment_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2072,8 +2877,8 @@ Accept: application/json
       </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"processor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2268,7 +3073,7 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     "price": 0,
     "source": "string",
     "description": "string",
-    "created_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z"
   }
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2374,7 +3179,7 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2473,8 +3278,8 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"processor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2673,8 +3478,8 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2785,8 +3590,8 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     </span><span class="s2">"sender_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2918,8 +3723,8 @@ curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0
     </span><span class="s2">"sender_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3221,10 +4026,10 @@ Accept: application/json
     </span><span class="s2">"privileges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"preferred_payment_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3349,13 +4154,329 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 <h1 id='schemas'>Schemas</h1>
+<h2 id="tocSserial">Serial</h2>
+
+<p><a id="schemaserial"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"short_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"short_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"long_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default_subscriber_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default_episode_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom_badge_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"drm_restricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"new_episodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mailing_list_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumb_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thumb_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>published</td>
+<td>boolean</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>short_title</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>release_date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tagline</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>short_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>long_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>default_subscriber_price</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>default_episode_price</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>custom_badge_text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>drm_restricted</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>new_episodes</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>mailing_list_id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>cover_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>cover_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>thumb_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>thumb_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocSseason">Season</h2>
 
 <p><a id="schemaseason"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"serial_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"season_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recommended_season_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_tall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cover_wide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties'>Properties</h3>
-<p><em>None</em></p>
+</span></code></pre><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>serial_id</td>
+<td>string(uuid)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>season_number</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>featured</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>recommended_season_id</td>
+<td>string(uuid)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>sku</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>cover_tall</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>cover_wide</td>
+<td>string(url)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
 
 <h2 id="tocSepisode">Episode</h2>
 
@@ -3386,11 +4507,11 @@ ApiKeyAuth
   </span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"divider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre><h3 id='properties-3'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3605,11 +4726,11 @@ ApiKeyAuth
   </span><span class="s2">"sender_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-3'>Properties</h3>
+</span></code></pre><h3 id='properties-4'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3721,11 +4842,11 @@ ApiKeyAuth
   </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"processor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-4'>Properties</h3>
+</span></code></pre><h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3847,13 +4968,13 @@ ApiKeyAuth
   </span><span class="s2">"privileges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"preferred_payment_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T14:35:45Z"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-12T19:14:54Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-5'>Properties</h3>
+</span></code></pre><h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
