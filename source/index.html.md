@@ -39,6 +39,474 @@ License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a
 
 Secured calls for clients with keys
 
+## getSerials
+
+<a id="opIdgetSerials"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /serials`
+
+*displays a list of serials*
+
+sorts available: created_at, release_date, title
+filters: published
+
+<h3 id="getserials-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|page|query|integer|false|page number|
+|per_page|query|integer|false|how many items to show per page|
+|sort|query|string|false|sort string, a comma separated list of fields and asc/desc|
+|published|query|boolean|false|whether the serial is published|
+
+#### Detailed descriptions
+
+**sort**: sort string, a comma separated list of fields and asc/desc
+example "created_at asc" or "created_at asc, title desc"
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "id": "string",
+      "published": true,
+      "title": "string",
+      "short_title": "string",
+      "release_date": "2018-06-12",
+      "end_date": "2018-06-12",
+      "slug": "string",
+      "tagline": "string",
+      "short_description": "string",
+      "long_description": "string",
+      "text": "string",
+      "default_subscriber_price": 0,
+      "default_episode_price": 0,
+      "custom_badge_text": "string",
+      "drm_restricted": true,
+      "new_episodes": true,
+      "mailing_list_id": "string",
+      "cover_tall": "string",
+      "cover_wide": "string",
+      "thumb_wide": "string",
+      "thumb_tall": "string",
+      "updated_at": "2018-06-12T19:14:54Z",
+      "created_at": "2018-06-12T19:14:54Z"
+    }
+  ]
+}
+```
+
+<h3 id="getserials-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|serials sent|Inline|
+
+<h3 id="getserials-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[[Serial](#schemaserial)]|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» published|boolean|true|none|none|
+|»» title|string|true|none|none|
+|»» short_title|string|false|none|none|
+|»» release_date|string(date)|false|none|none|
+|»» end_date|string(date)|false|none|none|
+|»» slug|string|true|none|none|
+|»» tagline|string|false|none|none|
+|»» short_description|string|false|none|none|
+|»» long_description|string|false|none|none|
+|»» text|string|false|none|none|
+|»» default_subscriber_price|integer|false|none|none|
+|»» default_episode_price|integer|false|none|none|
+|»» custom_badge_text|string|false|none|none|
+|»» drm_restricted|boolean|false|none|none|
+|»» new_episodes|boolean|false|none|none|
+|»» mailing_list_id|string|false|none|none|
+|»» cover_tall|string(url)|false|none|none|
+|»» cover_wide|string(url)|false|none|none|
+|»» thumb_wide|string(url)|false|none|none|
+|»» thumb_tall|string(url)|false|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» created_at|string(date-time)|true|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## getSerialById
+
+<a id="opIdgetSerialById"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId} \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId} HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/serials/{serialId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /serials/{serialId}`
+
+*retrieves info about a serial*
+
+get info about one serial
+
+<h3 id="getserialbyid-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|serialId|path|string(uuid)|true|Serial id to show|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "published": true,
+    "title": "string",
+    "short_title": "string",
+    "release_date": "2018-06-12",
+    "end_date": "2018-06-12",
+    "slug": "string",
+    "tagline": "string",
+    "short_description": "string",
+    "long_description": "string",
+    "text": "string",
+    "default_subscriber_price": 0,
+    "default_episode_price": 0,
+    "custom_badge_text": "string",
+    "drm_restricted": true,
+    "new_episodes": true,
+    "mailing_list_id": "string",
+    "cover_tall": "string",
+    "cover_wide": "string",
+    "thumb_wide": "string",
+    "thumb_tall": "string",
+    "updated_at": "2018-06-12T19:14:54Z",
+    "created_at": "2018-06-12T19:14:54Z"
+  }
+}
+```
+
+<h3 id="getserialbyid-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; serial returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|serial not found|None|
+
+<h3 id="getserialbyid-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Serial](#schemaserial)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» published|boolean|true|none|none|
+|»» title|string|true|none|none|
+|»» short_title|string|false|none|none|
+|»» release_date|string(date)|false|none|none|
+|»» end_date|string(date)|false|none|none|
+|»» slug|string|true|none|none|
+|»» tagline|string|false|none|none|
+|»» short_description|string|false|none|none|
+|»» long_description|string|false|none|none|
+|»» text|string|false|none|none|
+|»» default_subscriber_price|integer|false|none|none|
+|»» default_episode_price|integer|false|none|none|
+|»» custom_badge_text|string|false|none|none|
+|»» drm_restricted|boolean|false|none|none|
+|»» new_episodes|boolean|false|none|none|
+|»» mailing_list_id|string|false|none|none|
+|»» cover_tall|string(url)|false|none|none|
+|»» cover_wide|string(url)|false|none|none|
+|»» thumb_wide|string(url)|false|none|none|
+|»» thumb_tall|string(url)|false|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» created_at|string(date-time)|true|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
 ## getEpisodes
 
 <a id="opIdgetEpisodes"></a>
@@ -183,20 +651,21 @@ func main() {
 
 *displays a list of episodes*
 
-displays a list of episodes
+sorts available: episode_number, created_at, release_date
+title
 
 <h3 id="getepisodes-parameters">Parameters</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|integer|false|page number|
-|per_page|query|integer|false|number of items to show per page|
+|per_page|query|integer|false|how many items to show per page|
 |sort|query|string|false|sort string, a comma separated list of fields and asc/desc|
 |season_id|query|string(uuid)|false|find episodes attached to this season|
 |published|query|boolean|false|none|
 |free_pilot|query|boolean|false|none|
 |show_coming_soon|query|boolean|false|none|
-|release_date|query|string(date-time)|false|exact match on release date|
+|release_date|query|string(date-time)|false|exact match on release date of serial|
 |release_date_until|query|string(date-time)|false|match <= release date|
 |release_date_since|query|string(date-time)|false|match > release date|
 
@@ -238,8 +707,8 @@ example "created_at asc" or "created_at asc, title desc"
       "audio": "string",
       "divider": "string",
       "body": "string",
-      "created_at": "2018-06-12T14:35:45Z",
-      "updated_at": "2018-06-12T14:35:45Z"
+      "created_at": "2018-06-12T19:14:54Z",
+      "updated_at": "2018-06-12T19:14:54Z"
     }
   ]
 }
@@ -475,8 +944,8 @@ get info about one episode
     "audio": "string",
     "divider": "string",
     "body": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -583,10 +1052,10 @@ const inputBody = '{
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T14:35:45Z",
+    "last_activity": "2018-06-12T19:14:54Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }';
 const headers = {
@@ -708,10 +1177,10 @@ Adds a customer to the system
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T14:35:45Z",
+    "last_activity": "2018-06-12T19:14:54Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -748,10 +1217,10 @@ Adds a customer to the system
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T14:35:45Z",
+    "last_activity": "2018-06-12T19:14:54Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -954,10 +1423,10 @@ get info about one customer
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T14:35:45Z",
+    "last_activity": "2018-06-12T19:14:54Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -1164,8 +1633,8 @@ get a list of customer's purchases
       "source": "string",
       "processor": "string",
       "description": "string",
-      "created_at": "2018-06-12T14:35:45Z",
-      "updated_at": "2018-06-12T14:35:45Z"
+      "created_at": "2018-06-12T19:14:54Z",
+      "updated_at": "2018-06-12T19:14:54Z"
     }
   ]
 }
@@ -1257,7 +1726,7 @@ const inputBody = '{
     "price": 0,
     "source": "string",
     "description": "string",
-    "created_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z"
   }
 }';
 const headers = {
@@ -1376,7 +1845,7 @@ posts an already completed purchase to a customer
     "price": 0,
     "source": "string",
     "description": "string",
-    "created_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -1414,8 +1883,8 @@ posts an already completed purchase to a customer
     "source": "string",
     "processor": "string",
     "description": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -1511,8 +1980,8 @@ const inputBody = '{
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }';
 const headers = {
@@ -1636,8 +2105,8 @@ Adds a gift to the system
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -1678,8 +2147,8 @@ Adds a gift to the system
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -1884,10 +2353,10 @@ get info about one gift
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T14:35:45Z",
+    "last_activity": "2018-06-12T19:14:54Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T14:35:45Z",
-    "updated_at": "2018-06-12T14:35:45Z"
+    "created_at": "2018-06-12T19:14:54Z",
+    "updated_at": "2018-06-12T19:14:54Z"
   }
 }
 ```
@@ -1924,18 +2393,107 @@ ApiKeyAuth
 
 # Schemas
 
-<h2 id="tocSseason">Season</h2>
+<h2 id="tocSserial">Serial</h2>
 
-<a id="schemaseason"></a>
+<a id="schemaserial"></a>
 
 ```json
-{}
+{
+  "id": "string",
+  "published": true,
+  "title": "string",
+  "short_title": "string",
+  "release_date": "2018-06-12",
+  "end_date": "2018-06-12",
+  "slug": "string",
+  "tagline": "string",
+  "short_description": "string",
+  "long_description": "string",
+  "text": "string",
+  "default_subscriber_price": 0,
+  "default_episode_price": 0,
+  "custom_badge_text": "string",
+  "drm_restricted": true,
+  "new_episodes": true,
+  "mailing_list_id": "string",
+  "cover_tall": "string",
+  "cover_wide": "string",
+  "thumb_wide": "string",
+  "thumb_tall": "string",
+  "updated_at": "2018-06-12T19:14:54Z",
+  "created_at": "2018-06-12T19:14:54Z"
+}
 
 ```
 
 ### Properties
 
-*None*
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string(uuid)|true|none|none|
+|published|boolean|true|none|none|
+|title|string|true|none|none|
+|short_title|string|false|none|none|
+|release_date|string(date)|false|none|none|
+|end_date|string(date)|false|none|none|
+|slug|string|true|none|none|
+|tagline|string|false|none|none|
+|short_description|string|false|none|none|
+|long_description|string|false|none|none|
+|text|string|false|none|none|
+|default_subscriber_price|integer|false|none|none|
+|default_episode_price|integer|false|none|none|
+|custom_badge_text|string|false|none|none|
+|drm_restricted|boolean|false|none|none|
+|new_episodes|boolean|false|none|none|
+|mailing_list_id|string|false|none|none|
+|cover_tall|string(url)|false|none|none|
+|cover_wide|string(url)|false|none|none|
+|thumb_wide|string(url)|false|none|none|
+|thumb_tall|string(url)|false|none|none|
+|updated_at|string(date-time)|true|none|none|
+|created_at|string(date-time)|true|none|none|
+
+<h2 id="tocSseason">Season</h2>
+
+<a id="schemaseason"></a>
+
+```json
+{
+  "id": "string",
+  "title": "string",
+  "slug": "string",
+  "serial_id": "string",
+  "season_number": 0,
+  "description": "string",
+  "featured": true,
+  "recommended_season_id": "string",
+  "sku": "string",
+  "cover_tall": "string",
+  "cover_wide": "string",
+  "updated_at": "2018-06-12T19:14:54Z",
+  "created_at": "2018-06-12T19:14:54Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string(uuid)|true|none|none|
+|title|string|true|none|none|
+|slug|string|true|none|none|
+|serial_id|string(uuid)|false|none|none|
+|season_number|integer|true|none|none|
+|description|string|false|none|none|
+|featured|boolean|false|none|none|
+|recommended_season_id|string(uuid)|false|none|none|
+|sku|string|false|none|none|
+|cover_tall|string(url)|false|none|none|
+|cover_wide|string(url)|false|none|none|
+|updated_at|string(date-time)|true|none|none|
+|created_at|string(date-time)|true|none|none|
 
 <h2 id="tocSepisode">Episode</h2>
 
@@ -1968,8 +2526,8 @@ ApiKeyAuth
   "audio": "string",
   "divider": "string",
   "body": "string",
-  "created_at": "2018-06-12T14:35:45Z",
-  "updated_at": "2018-06-12T14:35:45Z"
+  "created_at": "2018-06-12T19:14:54Z",
+  "updated_at": "2018-06-12T19:14:54Z"
 }
 
 ```
@@ -2022,8 +2580,8 @@ ApiKeyAuth
   "sender_name": "string",
   "message": "string",
   "code": "string",
-  "created_at": "2018-06-12T14:35:45Z",
-  "updated_at": "2018-06-12T14:35:45Z"
+  "created_at": "2018-06-12T19:14:54Z",
+  "updated_at": "2018-06-12T19:14:54Z"
 }
 
 ```
@@ -2063,8 +2621,8 @@ ApiKeyAuth
   "source": "string",
   "processor": "string",
   "description": "string",
-  "created_at": "2018-06-12T14:35:45Z",
-  "updated_at": "2018-06-12T14:35:45Z"
+  "created_at": "2018-06-12T19:14:54Z",
+  "updated_at": "2018-06-12T19:14:54Z"
 }
 
 ```
@@ -2102,10 +2660,10 @@ ApiKeyAuth
   "privileges": [
     "string"
   ],
-  "last_activity": "2018-06-12T14:35:45Z",
+  "last_activity": "2018-06-12T19:14:54Z",
   "preferred_payment_source": "string",
-  "created_at": "2018-06-12T14:35:45Z",
-  "updated_at": "2018-06-12T14:35:45Z"
+  "created_at": "2018-06-12T19:14:54Z",
+  "updated_at": "2018-06-12T19:14:54Z"
 }
 
 ```
