@@ -1,239 +1,2127 @@
 ---
-title: API Reference
-
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
-
+title: Backend API
+language_tabs:
+  - shell: Shell
+  - http: HTTP
+  - javascript: JavaScript
+  - javascript--nodejs: Node.JS
+  - ruby: Ruby
+  - python: Python
+  - java: Java
+  - go: Go
+toc_footers: []
+includes: []
 search: true
+highlight_theme: darkula
+headingLevel: 2
+
 ---
 
-# Introduction
+<h1 id="Backend-API">Backend API v1.0.0</h1>
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Backend API
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Base URLs:
+
+* <a href="https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0">https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0</a>
+
+Email: <a href="mailto:james@serialbox.com">Support</a> 
+License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>
 
 # Authentication
 
-> To authorize, use this code:
+* API Key (ApiKeyAuth)
+    - Parameter Name: **X-Api-Key**, in: header. 
 
-```ruby
-require 'kittn'
+<h1 id="Backend-API-secured">secured</h1>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+Secured calls for clients with keys
 
-```python
-import kittn
+## getEpisodes
 
-api = kittn.authorize('meowmeowmeow')
-```
+<a id="opIdgetEpisodes"></a>
+
+> Code samples
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
 ```
 
 ```javascript
-const kittn = require('kittn');
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
 
-let api = kittn.authorize('meowmeowmeow');
-```
+};
 
-> Make sure to replace `meowmeowmeow` with your API key.
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes',
+  method: 'get',
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
   }
-]
+})
+
 ```
 
-This endpoint retrieves all kittens.
+```javascript--nodejs
+const request = require('node-fetch');
 
-### HTTP Request
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
 
-`GET http://example.com/api/kittens`
+};
 
-### Query Parameters
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes',
+{
+  method: 'GET',
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /episodes`
+
+*displays a list of episodes*
+
+displays a list of episodes
+
+<h3 id="getepisodes-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|page|query|integer|false|page number|
+|per_page|query|integer|false|number of items to show per page|
+|sort|query|string|false|sort string, a comma separated list of fields and asc/desc|
+|season_id|query|string(uuid)|false|find episodes attached to this season|
+|published|query|boolean|false|none|
+|free_pilot|query|boolean|false|none|
+|show_coming_soon|query|boolean|false|none|
+|release_date|query|string(date-time)|false|exact match on release date|
+|release_date_until|query|string(date-time)|false|match <= release date|
+|release_date_since|query|string(date-time)|false|match > release date|
+
+#### Detailed descriptions
+
+**sort**: sort string, a comma separated list of fields and asc/desc
+example "created_at asc" or "created_at asc, title desc"
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "id": "string",
+      "published": true,
+      "season_id": "string",
+      "slug": "string",
+      "sku": "string",
+      "tagline": "string",
+      "byline": "string",
+      "episode_number": 0,
+      "release_date": "2018-06-12",
+      "previously_on": "string",
+      "free_pilot": true,
+      "number_display": "string",
+      "header_background_color": "string",
+      "divider_color": "string",
+      "subscriber_price": 0,
+      "item_price": 0,
+      "shortened_url": "string",
+      "show_coming_soon": true,
+      "pdf": "string",
+      "mobi": "string",
+      "epub": "string",
+      "cover": "string",
+      "audio": "string",
+      "divider": "string",
+      "body": "string",
+      "created_at": "2018-06-12T14:35:45Z",
+      "updated_at": "2018-06-12T14:35:45Z"
+    }
+  ]
+}
+```
+
+<h3 id="getepisodes-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|episodes sent|Inline|
+
+<h3 id="getepisodes-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[[Episode](#schemaepisode)]|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» published|boolean|false|none|none|
+|»» season_id|string(uuid)|true|none|none|
+|»» slug|string|false|none|none|
+|»» sku|string|true|none|none|
+|»» tagline|string|false|none|none|
+|»» byline|string|false|none|none|
+|»» episode_number|integer|true|none|none|
+|»» release_date|string(date)|false|none|none|
+|»» previously_on|string|false|none|none|
+|»» free_pilot|boolean|false|none|none|
+|»» number_display|string|false|none|none|
+|»» header_background_color|string|false|none|none|
+|»» divider_color|string|false|none|none|
+|»» subscriber_price|integer|false|none|none|
+|»» item_price|integer|false|none|none|
+|»» shortened_url|string|false|none|none|
+|»» show_coming_soon|boolean|false|none|none|
+|»» pdf|string|false|none|none|
+|»» mobi|string|false|none|none|
+|»» epub|string|false|none|none|
+|»» cover|string|false|none|none|
+|»» audio|string|false|none|none|
+|»» divider|string|false|none|none|
+|»» body|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
 </aside>
 
-## Get a Specific Kitten
+## getEpisodeById
 
-```ruby
-require 'kittn'
+<a id="opIdgetEpisodeById"></a>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+> Code samples
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId} \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId} HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
 ```
 
 ```javascript
-const kittn = require('kittn');
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
 ```
 
-> The above command returns JSON structured like this:
+```javascript--nodejs
+const request = require('node-fetch');
 
-```json
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId}',
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
 ```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
 
 ```ruby
-require 'kittn'
+require 'rest-client'
+require 'json'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
 ```
 
 ```python
-import kittn
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId}', params={
+
+}, headers = headers)
+
+print r.json()
+
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
 ```
 
-```javascript
-const kittn = require('kittn');
+```go
+package main
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/episodes/{episodeId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
 ```
 
-> The above command returns JSON structured like this:
+`GET /episodes/{episodeId}`
+
+*retrieves info about a episode*
+
+get info about one episode
+
+<h3 id="getepisodebyid-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|episodeId|path|string(uuid)|true|Episode id to show|
+
+> Example responses
+
+> 200 Response
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "data": {
+    "id": "string",
+    "published": true,
+    "season_id": "string",
+    "slug": "string",
+    "sku": "string",
+    "tagline": "string",
+    "byline": "string",
+    "episode_number": 0,
+    "release_date": "2018-06-12",
+    "previously_on": "string",
+    "free_pilot": true,
+    "number_display": "string",
+    "header_background_color": "string",
+    "divider_color": "string",
+    "subscriber_price": 0,
+    "item_price": 0,
+    "shortened_url": "string",
+    "show_coming_soon": true,
+    "pdf": "string",
+    "mobi": "string",
+    "epub": "string",
+    "cover": "string",
+    "audio": "string",
+    "divider": "string",
+    "body": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
 }
 ```
 
-This endpoint deletes a specific kitten.
+<h3 id="getepisodebyid-responses">Responses</h3>
 
-### HTTP Request
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; episode returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|episode not found|None|
 
-`DELETE http://example.com/kittens/<ID>`
+<h3 id="getepisodebyid-responseschema">Response Schema</h3>
 
-### URL Parameters
+Status Code **200**
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Episode](#schemaepisode)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» published|boolean|false|none|none|
+|»» season_id|string(uuid)|true|none|none|
+|»» slug|string|false|none|none|
+|»» sku|string|true|none|none|
+|»» tagline|string|false|none|none|
+|»» byline|string|false|none|none|
+|»» episode_number|integer|true|none|none|
+|»» release_date|string(date)|false|none|none|
+|»» previously_on|string|false|none|none|
+|»» free_pilot|boolean|false|none|none|
+|»» number_display|string|false|none|none|
+|»» header_background_color|string|false|none|none|
+|»» divider_color|string|false|none|none|
+|»» subscriber_price|integer|false|none|none|
+|»» item_price|integer|false|none|none|
+|»» shortened_url|string|false|none|none|
+|»» show_coming_soon|boolean|false|none|none|
+|»» pdf|string|false|none|none|
+|»» mobi|string|false|none|none|
+|»» epub|string|false|none|none|
+|»» cover|string|false|none|none|
+|»» audio|string|false|none|none|
+|»» divider|string|false|none|none|
+|»» body|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## addCustomer
+
+<a id="opIdaddCustomer"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers HTTP/1.1
+Host: virtserver.swaggerhub.com
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers',
+  method: 'post',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+const inputBody = '{
+  "customer": {
+    "id": "string",
+    "email": "user@example.com",
+    "first_name": "string",
+    "last_name": "string",
+    "client_id": "string",
+    "privileges": [
+      "string"
+    ],
+    "last_activity": "2018-06-12T14:35:45Z",
+    "preferred_payment_source": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.post 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.post('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /customers`
+
+*adds a new customer*
+
+Adds a customer to the system
+
+> Body parameter
+
+```json
+{
+  "customer": {
+    "id": "string",
+    "email": "user@example.com",
+    "first_name": "string",
+    "last_name": "string",
+    "client_id": "string",
+    "privileges": [
+      "string"
+    ],
+    "last_activity": "2018-06-12T14:35:45Z",
+    "preferred_payment_source": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="addcustomer-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|Customer to add|
+|» customer|body|[Customer](#schemacustomer)|false|none|
+|»» id|body|string(uuid)|true|none|
+|»» email|body|string(email)|false|none|
+|»» first_name|body|string|false|none|
+|»» last_name|body|string|false|none|
+|»» client_id|body|string|false|XXX|
+|»» privileges|body|[string]|false|none|
+|»» last_activity|body|string(date-time)|false|none|
+|»» preferred_payment_source|body|string|false|none|
+|»» created_at|body|string(date-time)|false|none|
+|»» updated_at|body|string(date-time)|false|none|
+
+> Example responses
+
+> 201 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "email": "user@example.com",
+    "first_name": "string",
+    "last_name": "string",
+    "client_id": "string",
+    "privileges": [
+      "string"
+    ],
+    "last_activity": "2018-06-12T14:35:45Z",
+    "preferred_payment_source": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="addcustomer-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|customer created|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|invalid input, object invalid|None|
+|409|[Conflict](https://tools.ietf.org/html/rfc7231#section-6.5.8)|an existing item already exists|None|
+
+<h3 id="addcustomer-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Customer](#schemacustomer)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» email|string(email)|false|none|none|
+|»» first_name|string|false|none|none|
+|»» last_name|string|false|none|none|
+|»» client_id|string|false|none|XXX|
+|»» privileges|[string]|false|none|none|
+|»» last_activity|string(date-time)|false|none|none|
+|»» preferred_payment_source|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## getCustomerById
+
+<a id="opIdgetCustomerById"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId} \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId} HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /customers/{customerId}`
+
+*retrieves info about a customer*
+
+get info about one customer
+
+<h3 id="getcustomerbyid-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|customerId|path|string(uuid)|true|Customer id to show|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "email": "user@example.com",
+    "first_name": "string",
+    "last_name": "string",
+    "client_id": "string",
+    "privileges": [
+      "string"
+    ],
+    "last_activity": "2018-06-12T14:35:45Z",
+    "preferred_payment_source": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="getcustomerbyid-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; customer returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|customer not found|None|
+
+<h3 id="getcustomerbyid-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Customer](#schemacustomer)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» email|string(email)|false|none|none|
+|»» first_name|string|false|none|none|
+|»» last_name|string|false|none|none|
+|»» client_id|string|false|none|XXX|
+|»» privileges|[string]|false|none|none|
+|»» last_activity|string(date-time)|false|none|none|
+|»» preferred_payment_source|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## getCustomerPurchases
+
+<a id="opIdgetCustomerPurchases"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/purchases", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /customers/{customerId}/purchases`
+
+*retrieves a customer's purchases*
+
+get a list of customer's purchases
+
+<h3 id="getcustomerpurchases-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|customerId|path|string(uuid)|true|Customer id to show|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "id": "string",
+      "customer_id": "string",
+      "product_id": "string",
+      "transaction_id": "string",
+      "price": 0,
+      "refunded": true,
+      "is_processed": true,
+      "is_paid": true,
+      "receipt_sent": true,
+      "source": "string",
+      "processor": "string",
+      "description": "string",
+      "created_at": "2018-06-12T14:35:45Z",
+      "updated_at": "2018-06-12T14:35:45Z"
+    }
+  ]
+}
+```
+
+<h3 id="getcustomerpurchases-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; customer returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|customer not found|None|
+
+<h3 id="getcustomerpurchases-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[[Purchase](#schemapurchase)]|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» customer_id|string(uuid)|true|none|none|
+|»» product_id|string(uuid)|true|none|none|
+|»» transaction_id|string|false|none|none|
+|»» price|integer|true|none|none|
+|»» refunded|boolean|false|none|none|
+|»» is_processed|boolean|false|none|none|
+|»» is_paid|boolean|false|none|none|
+|»» receipt_sent|boolean|false|none|none|
+|»» source|string|false|none|none|
+|»» processor|string|false|none|none|
+|»» description|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## logCompletedPurchase
+
+<a id="opIdlogCompletedPurchase"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed HTTP/1.1
+Host: virtserver.swaggerhub.com
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed',
+  method: 'post',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+const inputBody = '{
+  "customer": {
+    "customer_id": "string",
+    "product_id": "string",
+    "price": 0,
+    "source": "string",
+    "description": "string",
+    "created_at": "2018-06-12T14:35:45Z"
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.post 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.post('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/customers/{customerId}/log_completed", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /customers/{customerId}/log_completed`
+
+*posts an already completed purchase to a customer*
+
+posts an already completed purchase to a customer
+
+> Body parameter
+
+```json
+{
+  "customer": {
+    "customer_id": "string",
+    "product_id": "string",
+    "price": 0,
+    "source": "string",
+    "description": "string",
+    "created_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="logcompletedpurchase-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|customerId|path|string(uuid)|true|Customer id to show|
+|body|body|object|false|Customer to add|
+|» customer|body|object|false|none|
+|»» customer_id|body|string(uuid)|true|none|
+|»» product_id|body|string(uuid)|true|none|
+|»» price|body|integer|true|none|
+|»» source|body|string|true|none|
+|»» description|body|string|false|none|
+|»» created_at|body|string(date-time)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "customer_id": "string",
+    "product_id": "string",
+    "transaction_id": "string",
+    "price": 0,
+    "refunded": true,
+    "is_processed": true,
+    "is_paid": true,
+    "receipt_sent": true,
+    "source": "string",
+    "processor": "string",
+    "description": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="logcompletedpurchase-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; customer returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|customer not found|None|
+
+<h3 id="logcompletedpurchase-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Purchase](#schemapurchase)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» customer_id|string(uuid)|true|none|none|
+|»» product_id|string(uuid)|true|none|none|
+|»» transaction_id|string|false|none|none|
+|»» price|integer|true|none|none|
+|»» refunded|boolean|false|none|none|
+|»» is_processed|boolean|false|none|none|
+|»» is_paid|boolean|false|none|none|
+|»» receipt_sent|boolean|false|none|none|
+|»» source|string|false|none|none|
+|»» processor|string|false|none|none|
+|»» description|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## addGift
+
+<a id="opIdaddGift"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+POST https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts HTTP/1.1
+Host: virtserver.swaggerhub.com
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts',
+  method: 'post',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+const inputBody = '{
+  "gift": {
+    "id": "string",
+    "sender_id": "string",
+    "recipient_id": "string",
+    "recipient_name": "string",
+    "recipient_email": "string",
+    "redeemed": true,
+    "product_id": "string",
+    "sender_name": "string",
+    "message": "string",
+    "code": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.post 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.post('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /gifts`
+
+*adds a new gift*
+
+Adds a gift to the system
+
+> Body parameter
+
+```json
+{
+  "gift": {
+    "id": "string",
+    "sender_id": "string",
+    "recipient_id": "string",
+    "recipient_name": "string",
+    "recipient_email": "string",
+    "redeemed": true,
+    "product_id": "string",
+    "sender_name": "string",
+    "message": "string",
+    "code": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="addgift-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|Gift to add|
+|» gift|body|[Gift](#schemagift)|false|none|
+|»» id|body|string(uuid)|true|none|
+|»» sender_id|body|string(uuid)|true|none|
+|»» recipient_id|body|string(uuid)|false|none|
+|»» recipient_name|body|string|false|none|
+|»» recipient_email|body|string|false|none|
+|»» redeemed|body|boolean|false|none|
+|»» product_id|body|string(uuid)|true|none|
+|»» sender_name|body|string|false|none|
+|»» message|body|string|false|none|
+|»» code|body|string|true|none|
+|»» created_at|body|string(date-time)|false|none|
+|»» updated_at|body|string(date-time)|false|none|
+
+> Example responses
+
+> 201 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "sender_id": "string",
+    "recipient_id": "string",
+    "recipient_name": "string",
+    "recipient_email": "string",
+    "redeemed": true,
+    "product_id": "string",
+    "sender_name": "string",
+    "message": "string",
+    "code": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="addgift-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|gift created|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|invalid input, object invalid|None|
+|409|[Conflict](https://tools.ietf.org/html/rfc7231#section-6.5.8)|an existing item already exists|None|
+
+<h3 id="addgift-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Gift](#schemagift)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» sender_id|string(uuid)|true|none|none|
+|»» recipient_id|string(uuid)|false|none|none|
+|»» recipient_name|string|false|none|none|
+|»» recipient_email|string|false|none|none|
+|»» redeemed|boolean|false|none|none|
+|»» product_id|string(uuid)|true|none|none|
+|»» sender_name|string|false|none|none|
+|»» message|string|false|none|none|
+|»» code|string|true|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## getGiftById
+
+<a id="opIdgetGiftById"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId} \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId} HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId}', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/gifts/{giftId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /gifts/{giftId}`
+
+*retrieves info about a gift*
+
+get info about one gift
+
+<h3 id="getgiftbyid-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|giftId|path|string(uuid)|true|Customer id to show|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "email": "user@example.com",
+    "first_name": "string",
+    "last_name": "string",
+    "client_id": "string",
+    "privileges": [
+      "string"
+    ],
+    "last_activity": "2018-06-12T14:35:45Z",
+    "preferred_payment_source": "string",
+    "created_at": "2018-06-12T14:35:45Z",
+    "updated_at": "2018-06-12T14:35:45Z"
+  }
+}
+```
+
+<h3 id="getgiftbyid-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; customer returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|customer not found|None|
+
+<h3 id="getgiftbyid-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Customer](#schemacustomer)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» email|string(email)|false|none|none|
+|»» first_name|string|false|none|none|
+|»» last_name|string|false|none|none|
+|»» client_id|string|false|none|XXX|
+|»» privileges|[string]|false|none|none|
+|»» last_activity|string(date-time)|false|none|none|
+|»» preferred_payment_source|string|false|none|none|
+|»» created_at|string(date-time)|false|none|none|
+|»» updated_at|string(date-time)|false|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+# Schemas
+
+<h2 id="tocSseason">Season</h2>
+
+<a id="schemaseason"></a>
+
+```json
+{}
+
+```
+
+### Properties
+
+*None*
+
+<h2 id="tocSepisode">Episode</h2>
+
+<a id="schemaepisode"></a>
+
+```json
+{
+  "id": "string",
+  "published": true,
+  "season_id": "string",
+  "slug": "string",
+  "sku": "string",
+  "tagline": "string",
+  "byline": "string",
+  "episode_number": 0,
+  "release_date": "2018-06-12",
+  "previously_on": "string",
+  "free_pilot": true,
+  "number_display": "string",
+  "header_background_color": "string",
+  "divider_color": "string",
+  "subscriber_price": 0,
+  "item_price": 0,
+  "shortened_url": "string",
+  "show_coming_soon": true,
+  "pdf": "string",
+  "mobi": "string",
+  "epub": "string",
+  "cover": "string",
+  "audio": "string",
+  "divider": "string",
+  "body": "string",
+  "created_at": "2018-06-12T14:35:45Z",
+  "updated_at": "2018-06-12T14:35:45Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string(uuid)|true|none|none|
+|published|boolean|false|none|none|
+|season_id|string(uuid)|true|none|none|
+|slug|string|false|none|none|
+|sku|string|true|none|none|
+|tagline|string|false|none|none|
+|byline|string|false|none|none|
+|episode_number|integer|true|none|none|
+|release_date|string(date)|false|none|none|
+|previously_on|string|false|none|none|
+|free_pilot|boolean|false|none|none|
+|number_display|string|false|none|none|
+|header_background_color|string|false|none|none|
+|divider_color|string|false|none|none|
+|subscriber_price|integer|false|none|none|
+|item_price|integer|false|none|none|
+|shortened_url|string|false|none|none|
+|show_coming_soon|boolean|false|none|none|
+|pdf|string|false|none|none|
+|mobi|string|false|none|none|
+|epub|string|false|none|none|
+|cover|string|false|none|none|
+|audio|string|false|none|none|
+|divider|string|false|none|none|
+|body|string|false|none|none|
+|created_at|string(date-time)|false|none|none|
+|updated_at|string(date-time)|false|none|none|
+
+<h2 id="tocSgift">Gift</h2>
+
+<a id="schemagift"></a>
+
+```json
+{
+  "id": "string",
+  "sender_id": "string",
+  "recipient_id": "string",
+  "recipient_name": "string",
+  "recipient_email": "string",
+  "redeemed": true,
+  "product_id": "string",
+  "sender_name": "string",
+  "message": "string",
+  "code": "string",
+  "created_at": "2018-06-12T14:35:45Z",
+  "updated_at": "2018-06-12T14:35:45Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string(uuid)|true|none|none|
+|sender_id|string(uuid)|true|none|none|
+|recipient_id|string(uuid)|false|none|none|
+|recipient_name|string|false|none|none|
+|recipient_email|string|false|none|none|
+|redeemed|boolean|false|none|none|
+|product_id|string(uuid)|true|none|none|
+|sender_name|string|false|none|none|
+|message|string|false|none|none|
+|code|string|true|none|none|
+|created_at|string(date-time)|false|none|none|
+|updated_at|string(date-time)|false|none|none|
+
+<h2 id="tocSpurchase">Purchase</h2>
+
+<a id="schemapurchase"></a>
+
+```json
+{
+  "id": "string",
+  "customer_id": "string",
+  "product_id": "string",
+  "transaction_id": "string",
+  "price": 0,
+  "refunded": true,
+  "is_processed": true,
+  "is_paid": true,
+  "receipt_sent": true,
+  "source": "string",
+  "processor": "string",
+  "description": "string",
+  "created_at": "2018-06-12T14:35:45Z",
+  "updated_at": "2018-06-12T14:35:45Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string(uuid)|true|none|none|
+|customer_id|string(uuid)|true|none|none|
+|product_id|string(uuid)|true|none|none|
+|transaction_id|string|false|none|none|
+|price|integer|true|none|none|
+|refunded|boolean|false|none|none|
+|is_processed|boolean|false|none|none|
+|is_paid|boolean|false|none|none|
+|receipt_sent|boolean|false|none|none|
+|source|string|false|none|none|
+|processor|string|false|none|none|
+|description|string|false|none|none|
+|created_at|string(date-time)|false|none|none|
+|updated_at|string(date-time)|false|none|none|
+
+<h2 id="tocScustomer">Customer</h2>
+
+<a id="schemacustomer"></a>
+
+```json
+{
+  "id": "string",
+  "email": "user@example.com",
+  "first_name": "string",
+  "last_name": "string",
+  "client_id": "string",
+  "privileges": [
+    "string"
+  ],
+  "last_activity": "2018-06-12T14:35:45Z",
+  "preferred_payment_source": "string",
+  "created_at": "2018-06-12T14:35:45Z",
+  "updated_at": "2018-06-12T14:35:45Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string(uuid)|true|none|none|
+|email|string(email)|false|none|none|
+|first_name|string|false|none|none|
+|last_name|string|false|none|none|
+|client_id|string|false|none|XXX|
+|privileges|[string]|false|none|none|
+|last_activity|string(date-time)|false|none|none|
+|preferred_payment_source|string|false|none|none|
+|created_at|string(date-time)|false|none|none|
+|updated_at|string(date-time)|false|none|none|
 
