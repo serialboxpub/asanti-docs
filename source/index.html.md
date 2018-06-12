@@ -39,6 +39,436 @@ License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a
 
 Secured calls for clients with keys
 
+## getSeasons
+
+<a id="opIdgetSeasons"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /seasons`
+
+*displays a list of seasons*
+
+sorts available: season_number created_at title
+
+<h3 id="getseasons-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|page|query|integer|false|page number|
+|per_page|query|integer|false|how many items to show per page|
+|sort|query|string|false|sort string, a comma separated list of fields and asc/desc|
+|season_number|query|integer|false|number of season|
+|serial_id|query|string(uuid)|false|uuid of serial|
+|featured|query|boolean|false|whether the season is featured|
+|published|query|boolean|false|whether the season is published|
+
+#### Detailed descriptions
+
+**sort**: sort string, a comma separated list of fields and asc/desc
+example "created_at asc" or "created_at asc, title desc"
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "id": "string",
+      "title": "string",
+      "slug": "string",
+      "serial_id": "string",
+      "season_number": 0,
+      "description": "string",
+      "featured": true,
+      "recommended_season_id": "string",
+      "sku": "string",
+      "cover_tall": "string",
+      "cover_wide": "string",
+      "updated_at": "2018-06-12T19:23:39Z",
+      "created_at": "2018-06-12T19:23:39Z"
+    }
+  ]
+}
+```
+
+<h3 id="getseasons-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|seasons sent|Inline|
+
+<h3 id="getseasons-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[[Season](#schemaseason)]|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» title|string|true|none|none|
+|»» slug|string|true|none|none|
+|»» serial_id|string(uuid)|false|none|none|
+|»» season_number|integer|true|none|none|
+|»» description|string|false|none|none|
+|»» featured|boolean|false|none|none|
+|»» recommended_season_id|string(uuid)|false|none|none|
+|»» sku|string|false|none|none|
+|»» cover_tall|string(url)|false|none|none|
+|»» cover_wide|string(url)|false|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» created_at|string(date-time)|true|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## getSeasonById
+
+<a id="opIdgetSeasonById"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId} \
+  -H 'Accept: application/json' \
+  -H 'X-Api-Key: API_KEY'
+
+```
+
+```http
+GET https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId} HTTP/1.1
+Host: virtserver.swaggerhub.com
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+$.ajax({
+  url: 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'X-Api-Key':'API_KEY'
+
+};
+
+fetch('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Api-Key' => 'API_KEY'
+}
+
+result = RestClient.get 'https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Api-Key': 'API_KEY'
+}
+
+r = requests.get('https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId}', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Api-Key": []string{"API_KEY"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://virtserver.swaggerhub.com/Serial-Box/Asanti_SerialBox/1.0.0/seasons/{seasonId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /seasons/{seasonId}`
+
+*retrieves info about a season*
+
+get info about one season
+
+<h3 id="getseasonbyid-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|seasonId|path|string(uuid)|true|Season id to show|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "id": "string",
+    "title": "string",
+    "slug": "string",
+    "serial_id": "string",
+    "season_number": 0,
+    "description": "string",
+    "featured": true,
+    "recommended_season_id": "string",
+    "sku": "string",
+    "cover_tall": "string",
+    "cover_wide": "string",
+    "updated_at": "2018-06-12T19:23:39Z",
+    "created_at": "2018-06-12T19:23:39Z"
+  }
+}
+```
+
+<h3 id="getseasonbyid-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|success; season returned|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|season not found|None|
+
+<h3 id="getseasonbyid-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|[Season](#schemaseason)|false|none|none|
+|»» id|string(uuid)|true|none|none|
+|»» title|string|true|none|none|
+|»» slug|string|true|none|none|
+|»» serial_id|string(uuid)|false|none|none|
+|»» season_number|integer|true|none|none|
+|»» description|string|false|none|none|
+|»» featured|boolean|false|none|none|
+|»» recommended_season_id|string(uuid)|false|none|none|
+|»» sku|string|false|none|none|
+|»» cover_tall|string(url)|false|none|none|
+|»» cover_wide|string(url)|false|none|none|
+|»» updated_at|string(date-time)|true|none|none|
+|»» created_at|string(date-time)|true|none|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
 ## getSerials
 
 <a id="opIdgetSerials"></a>
@@ -229,8 +659,8 @@ example "created_at asc" or "created_at asc, title desc"
       "cover_wide": "string",
       "thumb_wide": "string",
       "thumb_tall": "string",
-      "updated_at": "2018-06-12T19:14:54Z",
-      "created_at": "2018-06-12T19:14:54Z"
+      "updated_at": "2018-06-12T19:23:39Z",
+      "created_at": "2018-06-12T19:23:39Z"
     }
   ]
 }
@@ -458,8 +888,8 @@ get info about one serial
     "cover_wide": "string",
     "thumb_wide": "string",
     "thumb_tall": "string",
-    "updated_at": "2018-06-12T19:14:54Z",
-    "created_at": "2018-06-12T19:14:54Z"
+    "updated_at": "2018-06-12T19:23:39Z",
+    "created_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -707,8 +1137,8 @@ example "created_at asc" or "created_at asc, title desc"
       "audio": "string",
       "divider": "string",
       "body": "string",
-      "created_at": "2018-06-12T19:14:54Z",
-      "updated_at": "2018-06-12T19:14:54Z"
+      "created_at": "2018-06-12T19:23:39Z",
+      "updated_at": "2018-06-12T19:23:39Z"
     }
   ]
 }
@@ -944,8 +1374,8 @@ get info about one episode
     "audio": "string",
     "divider": "string",
     "body": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -1052,10 +1482,10 @@ const inputBody = '{
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T19:14:54Z",
+    "last_activity": "2018-06-12T19:23:39Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }';
 const headers = {
@@ -1177,10 +1607,10 @@ Adds a customer to the system
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T19:14:54Z",
+    "last_activity": "2018-06-12T19:23:39Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -1217,10 +1647,10 @@ Adds a customer to the system
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T19:14:54Z",
+    "last_activity": "2018-06-12T19:23:39Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -1423,10 +1853,10 @@ get info about one customer
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T19:14:54Z",
+    "last_activity": "2018-06-12T19:23:39Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -1633,8 +2063,8 @@ get a list of customer's purchases
       "source": "string",
       "processor": "string",
       "description": "string",
-      "created_at": "2018-06-12T19:14:54Z",
-      "updated_at": "2018-06-12T19:14:54Z"
+      "created_at": "2018-06-12T19:23:39Z",
+      "updated_at": "2018-06-12T19:23:39Z"
     }
   ]
 }
@@ -1726,7 +2156,7 @@ const inputBody = '{
     "price": 0,
     "source": "string",
     "description": "string",
-    "created_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z"
   }
 }';
 const headers = {
@@ -1845,7 +2275,7 @@ posts an already completed purchase to a customer
     "price": 0,
     "source": "string",
     "description": "string",
-    "created_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -1883,8 +2313,8 @@ posts an already completed purchase to a customer
     "source": "string",
     "processor": "string",
     "description": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -1980,8 +2410,8 @@ const inputBody = '{
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }';
 const headers = {
@@ -2105,8 +2535,8 @@ Adds a gift to the system
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -2147,8 +2577,8 @@ Adds a gift to the system
     "sender_name": "string",
     "message": "string",
     "code": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -2353,10 +2783,10 @@ get info about one gift
     "privileges": [
       "string"
     ],
-    "last_activity": "2018-06-12T19:14:54Z",
+    "last_activity": "2018-06-12T19:23:39Z",
     "preferred_payment_source": "string",
-    "created_at": "2018-06-12T19:14:54Z",
-    "updated_at": "2018-06-12T19:14:54Z"
+    "created_at": "2018-06-12T19:23:39Z",
+    "updated_at": "2018-06-12T19:23:39Z"
   }
 }
 ```
@@ -2420,8 +2850,8 @@ ApiKeyAuth
   "cover_wide": "string",
   "thumb_wide": "string",
   "thumb_tall": "string",
-  "updated_at": "2018-06-12T19:14:54Z",
-  "created_at": "2018-06-12T19:14:54Z"
+  "updated_at": "2018-06-12T19:23:39Z",
+  "created_at": "2018-06-12T19:23:39Z"
 }
 
 ```
@@ -2471,8 +2901,8 @@ ApiKeyAuth
   "sku": "string",
   "cover_tall": "string",
   "cover_wide": "string",
-  "updated_at": "2018-06-12T19:14:54Z",
-  "created_at": "2018-06-12T19:14:54Z"
+  "updated_at": "2018-06-12T19:23:39Z",
+  "created_at": "2018-06-12T19:23:39Z"
 }
 
 ```
@@ -2526,8 +2956,8 @@ ApiKeyAuth
   "audio": "string",
   "divider": "string",
   "body": "string",
-  "created_at": "2018-06-12T19:14:54Z",
-  "updated_at": "2018-06-12T19:14:54Z"
+  "created_at": "2018-06-12T19:23:39Z",
+  "updated_at": "2018-06-12T19:23:39Z"
 }
 
 ```
@@ -2580,8 +3010,8 @@ ApiKeyAuth
   "sender_name": "string",
   "message": "string",
   "code": "string",
-  "created_at": "2018-06-12T19:14:54Z",
-  "updated_at": "2018-06-12T19:14:54Z"
+  "created_at": "2018-06-12T19:23:39Z",
+  "updated_at": "2018-06-12T19:23:39Z"
 }
 
 ```
@@ -2621,8 +3051,8 @@ ApiKeyAuth
   "source": "string",
   "processor": "string",
   "description": "string",
-  "created_at": "2018-06-12T19:14:54Z",
-  "updated_at": "2018-06-12T19:14:54Z"
+  "created_at": "2018-06-12T19:23:39Z",
+  "updated_at": "2018-06-12T19:23:39Z"
 }
 
 ```
@@ -2660,10 +3090,10 @@ ApiKeyAuth
   "privileges": [
     "string"
   ],
-  "last_activity": "2018-06-12T19:14:54Z",
+  "last_activity": "2018-06-12T19:23:39Z",
   "preferred_payment_source": "string",
-  "created_at": "2018-06-12T19:14:54Z",
-  "updated_at": "2018-06-12T19:14:54Z"
+  "created_at": "2018-06-12T19:23:39Z",
+  "updated_at": "2018-06-12T19:23:39Z"
 }
 
 ```
